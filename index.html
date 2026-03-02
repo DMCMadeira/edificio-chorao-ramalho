@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="pt" data-lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Edifício Chorão Ramalho | Escritórios Premium para Arrendar em Funchal, Madeira</title>
+  <meta name="description" content="Escritórios e espaços comerciais premium para arrendar no coração de Funchal, na Avenida do Mar. Vista mar, arquitetura icónica do arquiteto Chorão Ramalho. Contacte-nos." />
+  <meta name="keywords" content="escritórios arrendar Funchal, office rent Funchal Madeira, Edifício Chorão Ramalho, espaços comerciais Funchal, avenida do mar funchal, premium office Madeira" />
+  <meta property="og:title" content="Edifício Chorão Ramalho | Premium Offices Funchal, Madeira" />
+  <meta property="og:description" content="Iconic office building designed by architect Chorão Ramalho. Sea view offices for rent on Avenida do Mar, Funchal." />
+  <meta property="og:type" content="website" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://jorgewelsh.wixsite.com/edifichoraoramalho" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "RealEstateAgent",
+    "name": "Edifício Chorão Ramalho",
+    "description": "Premium office building for rent in Funchal, Madeira.",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Av. do Mar e Das Comunidades Madeirenses, nº 15, 1º andar",
+      "addressLocality": "Funchal",
+      "postalCode": "9000-054",
+      "addressCountry": "PT"
+    },
+    "telephone": "+351291239000",
+    "email": "luisa.rodrigues@jwholding.pt"
+  }
+  </script>
+  <style>
+    :root {
+      --gold: #A67C3C;
+      --gold-light: #BF9A58;
+      --dark: #0d0d0d;
+      --dark2: #111111;
+      --dark3: #1a1a1a;
+      --white: #f5f5f0;
+      --grey: #888;
+      --border: rgba(201,149,42,0.22);
+      --font-head: 'Georgia', serif;
+      --font-body: 'Helvetica Neue', Arial, sans-serif;
+      --tr: 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--dark); color: var(--white); font-family: var(--font-body); overflow-x: hidden; line-height: 1.6; }
+    ::-webkit-scrollbar { width: 3px; }
+    ::-webkit-scrollbar-thumb { background: var(--gold); }
+
+    /* CURSOR */
+    .cur { width: 8px; height: 8px; background: var(--gold); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; transition: transform .15s; mix-blend-mode: difference; }
+    .cur-ring { width: 34px; height: 34px; border: 1px solid var(--gold); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9998; transition: all .3s; opacity: .45; }
+
+    /* SCROLL PROGRESS */
+    #sprog { position: fixed; top: 0; left: 0; height: 2px; background: var(--gold); z-index: 300; width: 0; }
+
+    /* LANG */
+    .lang-sw { display: flex; gap: 6px; }
+    .lb { background: transparent; border: 1px solid rgba(245,245,240,.5); color: var(--white); padding: 5px 13px; font-size: 11px; letter-spacing: .1em; cursor: pointer; transition: var(--tr); text-transform: uppercase; }
+    .lb.active { border-color: var(--gold); background: var(--gold); color: var(--dark); }
+    .lb:hover:not(.active) { border-color: var(--white); }
+
+    /* NAV */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 24px 48px; display: flex; align-items: center; justify-content: space-between; transition: var(--tr); }
+    nav.sc { background: rgba(13,13,13,.96); backdrop-filter: blur(12px); padding: 15px 48px; border-bottom: 1px solid var(--border); }
+    .nlogo { font-family: var(--font-head); font-size: 13px; letter-spacing: .22em; text-transform: uppercase; color: var(--white); text-decoration: none; }
+    .nlogo span { color: var(--gold); }
+    .nlinks { display: flex; gap: 34px; list-style: none; }
+    .nlinks a { text-decoration: none; color: var(--grey); font-size: 11px; letter-spacing: .15em; text-transform: uppercase; transition: var(--tr); position: relative; }
+    .nlinks a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1px; background: var(--gold); transition: width .3s; }
+    .nlinks a:hover { color: var(--white); }
+    .nlinks a:hover::after { width: 100%; }
+
+    /* HERO */
+    #hero { height: 100vh; position: relative; display: flex; align-items: flex-end; overflow: hidden; }
+    .hbg { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(13,13,13,.25) 0%, rgba(13,13,13,.65) 55%, rgba(13,13,13,1) 100%); z-index: 1; }
+    .hbg-img { position: absolute; inset: 0; background: center/cover no-repeat; transform: scale(1.06); transition: transform 8s ease; }
+    #hero.loaded .hbg-img { transform: scale(1); }
+    .hcont { position: relative; z-index: 2; padding: 0 48px 80px; max-width: 820px; }
+    .htag { font-size: 11px; letter-spacing: .3em; text-transform: uppercase; color: var(--gold); margin-bottom: 18px; display: flex; align-items: center; gap: 12px; }
+    .htag::before { content: ''; width: 36px; height: 1px; background: var(--gold); }
+    .htitle { font-family: var(--font-head); font-size: clamp(2.4rem,6vw,5rem); font-weight: 400; line-height: 1.1; margin-bottom: 22px; }
+    .htitle em { font-style: italic; color: var(--gold); }
+    .hdesc { font-size: 15px; color: rgba(245,245,240,.7); max-width: 480px; margin-bottom: 38px; line-height: 1.85; }
+    .hcta { display: inline-flex; align-items: center; gap: 12px; background: var(--gold); color: var(--dark); padding: 14px 32px; text-decoration: none; font-size: 11px; letter-spacing: .2em; text-transform: uppercase; font-weight: 700; transition: var(--tr); }
+    .hcta:hover { background: var(--gold-light); gap: 20px; }
+    .hcta2 { display: inline-flex; align-items: center; border: 1px solid var(--border); color: var(--white); padding: 14px 32px; text-decoration: none; font-size: 11px; letter-spacing: .2em; text-transform: uppercase; transition: var(--tr); margin-left: 14px; }
+    .hcta2:hover { border-color: var(--gold); color: var(--gold); }
+    .hstats { position: absolute; right: 48px; bottom: 80px; display: flex; flex-direction: column; gap: 24px; z-index: 2; }
+    .stat { text-align: right; }
+    .snum { font-family: var(--font-head); font-size: 2rem; color: var(--gold); line-height: 1; }
+    .slbl { font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: var(--grey); margin-top: 4px; }
+
+    /* SECTION BASE */
+    section { padding: 96px 48px; }
+    .stag { font-size: 10px; letter-spacing: .3em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
+    .stitle { font-family: var(--font-head); font-size: clamp(1.8rem,3.5vw,3rem); font-weight: 400; line-height: 1.2; margin-bottom: 20px; }
+    .sline { width: 56px; height: 1px; background: var(--gold); margin-bottom: 36px; }
+    .stxt { font-size: 15px; color: rgba(245,245,240,.68); line-height: 1.9; max-width: 540px; }
+
+    /* GALLERY HERO STRIP */
+    #gallstrip { padding: 0; display: grid; grid-template-columns: 2fr 1fr 1fr; grid-template-rows: 300px 300px; gap: 3px; background: var(--dark); }
+    .gs { overflow: hidden; position: relative; }
+    .gs img { width: 100%; height: 100%; object-fit: cover; transition: transform .7s ease; filter: brightness(.82); }
+    .gs:hover img { transform: scale(1.06); filter: brightness(.95); }
+    .gs.big { grid-row: 1 / 3; }
+    .gs-label { position: absolute; bottom: 16px; left: 16px; font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); z-index: 2; background: rgba(13,13,13,.7); padding: 4px 10px; }
+
+    /* HISTORY */
+    #history { background: var(--dark2); display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .hvis { position: relative; }
+    .hvis img { width: 100%; aspect-ratio: 3/4; object-fit: cover; display: block; filter: brightness(.9); }
+    .hyr { position: absolute; bottom: -18px; right: -18px; background: var(--gold); color: var(--dark); font-family: var(--font-head); font-size: 3.5rem; font-weight: 700; padding: 18px 24px; line-height: 1; }
+    .hfacts { margin-top: 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .fact { border-left: 2px solid var(--border); padding-left: 14px; }
+    .ftitle { font-size: 10px; letter-spacing: .15em; text-transform: uppercase; color: var(--gold); margin-bottom: 3px; }
+    .fval { font-size: 13px; color: var(--white); }
+
+    /* SPACES */
+    #typology { background: var(--dark); }
+    .sgrid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; margin-top: 56px; }
+    .sc2 { position: relative; aspect-ratio: 4/5; overflow: hidden; cursor: pointer; background: var(--dark3); }
+    .sc2-bg { position: absolute; inset: 0; background-size: cover; background-position: center; transition: transform .7s ease; filter: brightness(.48); }
+    .sc2:hover .sc2-bg { transform: scale(1.07); filter: brightness(.3); }
+    .sc2-body { position: absolute; inset: 0; padding: 28px; display: flex; flex-direction: column; justify-content: flex-end; z-index: 2; }
+    .sc2-tag { font-size: 10px; letter-spacing: .25em; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
+    .sc2-title { font-family: var(--font-head); font-size: 1.3rem; margin-bottom: 6px; }
+    .sc2-size { font-size: 12px; color: rgba(245,245,240,.55); letter-spacing: .08em; }
+    .sc2-arr { position: absolute; top: 28px; right: 28px; width: 38px; height: 38px; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; transition: var(--tr); opacity: 0; transform: translateY(-8px); color: var(--gold); }
+    .sc2:hover .sc2-arr { opacity: 1; transform: translateY(0); border-color: var(--gold); }
+
+    /* INTERIOR GALLERY */
+    #intgall { padding: 0; display: grid; grid-template-columns: repeat(4,1fr); gap: 3px; background: var(--dark); }
+    .ig { overflow: hidden; aspect-ratio: 1; position: relative; }
+    .ig img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease, filter .6s ease; filter: brightness(.75); }
+    .ig:hover img { transform: scale(1.08); filter: brightness(1); }
+    .ig-label { position: absolute; bottom: 12px; left: 12px; font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); z-index: 2; background: rgba(13,13,13,.7); padding: 4px 10px; pointer-events: none; }
+
+    /* FEATURES */
+    #features { background: var(--dark2); }
+    .fgrid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; margin-top: 56px; border: 1px solid var(--border); }
+    .feat { padding: 28px 24px; border: 1px solid var(--border); transition: var(--tr); position: relative; overflow: hidden; }
+    .feat::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(201,149,42,.06), transparent); opacity: 0; transition: var(--tr); }
+    .feat:hover { border-color: var(--gold); transform: translateY(-3px); }
+    .feat:hover::before { opacity: 1; }
+    .ftit { font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+    .fdesc { font-size: 12px; color: rgba(245,245,240,.58); line-height: 1.7; }
+
+    /* LOCATION */
+    #location { background: var(--dark); display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .lmap { position: relative; border: 1px solid var(--border); overflow: hidden; }
+    .lmap iframe { width: 100%; display: block; filter: grayscale(30%) contrast(1.05); }
+    @keyframes pulse { 0%,100% { transform: scale(1); opacity: .5; } 50% { transform: scale(1.25); opacity: .15; } }
+    .mpin { font-size: 2.4rem; z-index: 2; }
+    .maddr { text-align: center; z-index: 2; }
+    .maddr strong { display: block; color: var(--gold); font-size: 12px; letter-spacing: .1em; margin-bottom: 4px; }
+    .maddr span { font-size: 12px; color: var(--grey); }
+    .mlink { position: absolute; bottom: 22px; left: 50%; transform: translateX(-50%); font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); text-decoration: none; border: 1px solid var(--border); padding: 7px 18px; z-index: 3; white-space: nowrap; transition: var(--tr); }
+    .mlink:hover { border-color: var(--gold); background: rgba(201,149,42,.08); }
+    .nlist { list-style: none; margin-top: 28px; }
+    .nlist li { display: flex; justify-content: space-between; padding: 11px 0; border-bottom: 1px solid var(--border); font-size: 13px; color: rgba(245,245,240,.68); }
+    .nlist li span:last-child { color: var(--gold); }
+
+    /* CONTACT */
+    #contact { background: var(--dark2); display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+    .cinfo h2 { font-family: var(--font-head); font-size: clamp(1.8rem,3vw,2.8rem); font-weight: 400; margin-bottom: 22px; }
+    .ci { display: flex; gap: 14px; margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid var(--border); }
+    .ci-ico { color: var(--gold); font-size: 1rem; margin-top: 2px; }
+    .ci-lbl { font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: var(--grey); margin-bottom: 3px; }
+    .ci-val { font-size: 14px; color: var(--white); }
+    .ci-val a { color: var(--white); text-decoration: none; transition: var(--tr); }
+    .ci-val a:hover { color: var(--gold); }
+    .cform { display: flex; flex-direction: column; gap: 14px; }
+    .fi { width: 100%; background: var(--dark3); border: 1px solid var(--border); color: var(--white); padding: 15px 18px; font-size: 13px; font-family: var(--font-body); outline: none; transition: var(--tr); }
+    .fi::placeholder { color: var(--grey); }
+    .fi:focus { border-color: var(--gold); }
+    textarea.fi { height: 110px; resize: vertical; }
+    .frow { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .fsub { background: var(--gold); color: var(--dark); border: none; padding: 15px 38px; font-size: 11px; letter-spacing: .2em; text-transform: uppercase; font-weight: 700; cursor: pointer; transition: var(--tr); align-self: flex-start; }
+    .fsub:hover { background: var(--gold-light); transform: translateY(-2px); }
+
+    /* FOOTER */
+    footer { padding: 36px 48px; background: var(--dark); border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
+    .flogo { font-family: var(--font-head); font-size: 12px; letter-spacing: .2em; text-transform: uppercase; }
+    .flogo span { color: var(--gold); }
+    .fcopy { font-size: 11px; color: var(--grey); }
+
+    /* REVEAL */
+    .rv { opacity: 0; transform: translateY(28px); transition: opacity .75s ease, transform .75s ease; }
+    .rv.vis { opacity: 1; transform: translateY(0); }
+
+    /* LANG */
+    [data-en],[data-pt] { display: none; }
+    html[data-lang="pt"] div[data-pt], html[data-lang="pt"] p[data-pt], html[data-lang="pt"] h2[data-pt], html[data-lang="pt"] li[data-pt], html[data-lang="pt"] ul[data-pt] { display: block; }
+    html[data-lang="pt"] span[data-pt], html[data-lang="pt"] a[data-pt], html[data-lang="pt"] button[data-pt] { display: inline; }
+    html[data-lang="en"] div[data-en], html[data-lang="en"] p[data-en], html[data-lang="en"] h2[data-en], html[data-lang="en"] li[data-en], html[data-lang="en"] ul[data-en] { display: block; }
+    html[data-lang="en"] span[data-en], html[data-lang="en"] a[data-en], html[data-lang="en"] button[data-en] { display: inline; }
+    [data-pt-block],[data-en-block] { display: none; }
+    html[data-lang="pt"] [data-pt-block] { display: block; }
+    html[data-lang="en"] [data-en-block] { display: block; }
+    [data-pt-grid],[data-en-grid] { display: none; }
+    html[data-lang="pt"] [data-pt-grid] { display: grid; }
+    html[data-lang="en"] [data-en-grid] { display: grid; }
+    [data-pt-flex],[data-en-flex] { display: none; }
+    html[data-lang="pt"] [data-pt-flex] { display: flex; }
+    html[data-lang="en"] [data-en-flex] { display: flex; }
+
+    /* RESPONSIVE */
+    @media(max-width:900px){
+      section{padding:56px 22px;}
+      nav{padding:18px 22px;}
+      nav.sc{padding:13px 22px;}
+      #history,#location,#contact{grid-template-columns:1fr;gap:36px;}
+      .sgrid{grid-template-columns:1fr 1fr;}
+      .fgrid{grid-template-columns:1fr 1fr;}
+      .hcont{padding:0 22px 56px;}
+      .hstats{right:22px;bottom:56px;}
+      .nlinks{display:none;}
+      footer{flex-direction:column;gap:10px;text-align:center;}
+      #gallstrip{grid-template-columns:1fr 1fr;grid-template-rows:220px 220px;}
+      .gs.big{grid-row:unset;}
+      #intgall{grid-template-columns:1fr 1fr;}
+    }
+    @media(max-width:560px){
+      .sgrid{grid-template-columns:1fr;}
+      .fgrid{grid-template-columns:1fr;}
+      .frow{grid-template-columns:1fr;}
+      #intgall{grid-template-columns:1fr 1fr;}
+    }
+  </style>
+</head>
+<body>
+
+<div id="sprog"></div>
+<div class="cur" id="cur"></div>
+<div class="cur-ring" id="curR"></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#hero" class="nlogo">Edifício <span>Chorão</span> Ramalho</a>
+  <ul class="nlinks">
+    <li><a href="#history" data-pt>História</a><a href="#history" data-en>History</a></li>
+    <li><a href="#typology" data-pt>Espaços</a><a href="#typology" data-en>Spaces</a></li>
+    <li><a href="#features" data-pt>Serviços</a><a href="#features" data-en>Services</a></li>
+    <li><a href="#location" data-pt>Localização</a><a href="#location" data-en>Location</a></li>
+    <li><a href="#contact" data-pt>Contacto</a><a href="#contact" data-en>Contact</a></li>
+  </ul>
+  <div class="lang-sw">
+    <button class="lb active" onclick="setLang('pt')" id="bpt">PT</button>
+    <button class="lb" onclick="setLang('en')" id="ben">EN</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <!-- Using the beautiful night facade photo as hero bg via inline style set by JS -->
+  <div class="hbg-img" id="heroBg"></div>
+  <div class="hbg"></div>
+  <div class="hcont">
+    <p class="htag rv" data-pt>Funchal, Madeira · Desde 1961</p>
+    <p class="htag rv" data-en>Funchal, Madeira · Since 1961</p>
+    <h1 class="htitle rv">
+      <span data-pt>Escritórios <em>icónicos</em><br>com vista <em>mar</em></span>
+      <span data-en>Iconic offices<br>with <em>sea views</em></span>
+    </h1>
+    <p class="hdesc rv" data-pt>Edifício premium na Avenida do Mar, em frente ao Porto de Funchal. Projetado pelo arquiteto Chorão Ramalho, renovado em 2014. Espaços para arrendar com elegância atemporal.</p>
+    <p class="hdesc rv" data-en>Premium building on Avenida do Mar, facing Funchal Harbour. Designed by architect Chorão Ramalho, refurbished in 2014. Timeless office spaces for rent.</p>
+    <div class="rv">
+      <a href="#contact" class="hcta" data-pt>Agendar Visita →</a>
+      <a href="#contact" class="hcta" data-en>Schedule a Visit →</a>
+      <a href="#typology" class="hcta2" data-pt>Ver Espaços</a>
+      <a href="#typology" class="hcta2" data-en>View Spaces</a>
+    </div>
+  </div>
+  <div class="hstats">
+    <div class="stat rv"><div class="snum">5</div><div class="slbl" data-pt>Pisos</div><div class="slbl" data-en>Floors</div></div>
+    <div class="stat rv"><div class="snum">1961</div><div class="slbl" data-pt>Fundado</div><div class="slbl" data-en>Founded</div></div>
+  </div>
+</section>
+
+<!-- GALLERY STRIP — real building photos -->
+<div id="gallstrip">
+  <div class="gs big rv">
+    <img id="img-facade" src="assets/img/galeria-01.jpg" alt="Fachada Edifício Chorão Ramalho ao anoitecer, Funchal" loading="lazy" />
+    <div class="gs-label" data-pt>Hall de Entrada</div>
+    <div class="gs-label" data-en>Entrance Hall</div>
+  </div>
+  <div class="gs rv">
+    <img id="img-entrance" src="assets/img/entrada.jpeg" alt="Hall de entrada com escadas em mármore e roda náutica" loading="lazy" />
+    <div class="gs-label" data-pt>Entrada</div>
+    <div class="gs-label" data-en>Entrance</div>
+  </div>
+  <div class="gs rv">
+    <img id="img-lobby" src="assets/img/sala-espera-2-andar.jpg" alt="Lobby do edifício com piso em mármore e placard de empresas" loading="lazy" />
+    <div class="gs-label" data-pt>Lobby</div>
+    <div class="gs-label" data-en>Lobby</div>
+  </div>
+  <div class="gs rv">
+    <img id="img-floor2" src="assets/img/corredor-2-andar.jpg" alt="Piso 2 com corredor em madeira vintage e portas de escritório" loading="lazy" />
+    <div class="gs-label" data-pt>Corredor</div>
+    <div class="gs-label" data-en>Corridor</div>
+  </div>
+  <div class="gs rv">
+    <img id="img-parking" src="assets/img/garagem.jpg" alt="Estacionamento privativo com acesso direto por elevador" loading="lazy" />
+    <div class="gs-label" data-pt>Estacionamento</div>
+    <div class="gs-label" data-en>Parking</div>
+  </div>
+</div>
+
+<!-- AVAILABLE SPACES BREAK -->
+<div id="available" style="background:var(--dark);padding:80px 48px;">
+  <div style="max-width:1100px;margin:0 auto;">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:48px;flex-wrap:wrap;gap:16px;">
+      <div>
+        <p class="stag rv" data-pt>Disponibilidade Atual</p>
+        <p class="stag rv" data-en>Current Availability</p>
+        <h2 class="stitle rv" style="margin-bottom:0" data-pt>Espaços Disponíveis</h2>
+        <h2 class="stitle rv" style="margin-bottom:0" data-en>Available Spaces</h2>
+      </div>
+      <div class="rv" style="display:flex;align-items:center;gap:8px;">
+        <span style="width:8px;height:8px;border-radius:50%;background:#4ade80;display:inline-block;box-shadow:0 0 8px #4ade80;animation:blink 2s ease infinite;"></span>
+        <span style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#4ade80;" data-pt>Disponível para arrendamento</span>
+        <span style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#4ade80;" data-en>Available for lease</span>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;" class="rv" id="avail-grid">
+
+      <!-- CARD 1 -->
+      <div class="av-card" style="background:var(--dark3);border:1px solid var(--border);padding:36px 32px;position:relative;overflow:hidden;transition:var(--tr);cursor:pointer;" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:var(--gold);"></div>
+        <div style="font-size:10px;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;" data-pt>Piso 2</div>
+        <div style="font-size:10px;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;" data-en>Floor 2</div>
+        <div style="font-family:var(--font-head);font-size:1.5rem;margin-bottom:4px;line-height:1.2;" data-pt>2 Salas</div>
+        <div style="font-family:var(--font-head);font-size:1.5rem;margin-bottom:4px;line-height:1.2;" data-en>2 Offices</div>
+        <div style="font-size:12px;color:var(--grey);margin-bottom:28px;letter-spacing:.05em;" data-pt>Utilizáveis em conjunto ou separadamente</div>
+        <div style="font-size:12px;color:var(--grey);margin-bottom:28px;letter-spacing:.05em;" data-en>Can be used together or separately</div>
+        <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:28px;border-top:1px solid var(--border);padding-top:20px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;font-size:12px;">
+            <span style="color:var(--grey)" data-pt>Sala B</span>
+            <span style="color:var(--grey)" data-en>Room B</span>
+            <span style="display:flex;align-items:center;gap:10px;">
+              <span style="color:var(--gold);font-size:10px;letter-spacing:.05em;" data-pt>Disponível abril</span>
+              <span style="color:var(--gold);font-size:10px;letter-spacing:.05em;" data-en>Available April</span>
+              <span style="color:var(--white);font-weight:600;">17,15 m²</span>
+            </span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;font-size:12px;">
+            <span style="color:var(--grey)" data-pt>Sala A</span>
+            <span style="color:var(--grey)" data-en>Room A</span>
+            <span style="display:flex;align-items:center;gap:10px;">
+              <span style="color:var(--gold);font-size:10px;letter-spacing:.05em;" data-pt>Disponível junho</span>
+              <span style="color:var(--gold);font-size:10px;letter-spacing:.05em;" data-en>Available June</span>
+              <span style="color:var(--white);font-weight:600;">31,80 m²</span>
+            </span>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:12px;border-top:1px solid var(--border);padding-top:10px;">
+            <span style="color:var(--grey)" data-pt>Total conjunto</span>
+            <span style="color:var(--grey)" data-en>Combined total</span>
+            <span style="color:var(--gold);font-weight:700;">48,95 m²</span>
+          </div>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px;">
+          <span class="tag-pill" data-pt>Vista Oceano</span><span class="tag-pill" data-en>Ocean View</span>
+          <span class="tag-pill" data-pt>Soalho Madeira</span><span class="tag-pill" data-en>Wood Floor</span>
+          <span class="tag-pill" data-pt>AC Incluído</span><span class="tag-pill" data-en>AC Included</span>
+          <span class="tag-pill" data-pt>Vidro Duplo</span><span class="tag-pill" data-en>Double Glazing</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;color:var(--gold);font-size:11px;letter-spacing:.15em;text-transform:uppercase;">
+          <span data-pt>Pedir Informação</span><span data-en>Request Info</span>
+          <span style="transition:transform .3s;" class="arr">→</span>
+        </div>
+      </div>
+
+      <!-- CARD 2 -->
+      <div class="av-card" style="background:var(--dark3);border:1px solid var(--border);padding:36px 32px;position:relative;overflow:hidden;transition:var(--tr);cursor:pointer;" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:var(--gold);"></div>
+        <div style="font-size:10px;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;" data-pt>Piso 3</div>
+        <div style="font-size:10px;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;" data-en>Floor 3</div>
+        <div style="font-family:var(--font-head);font-size:1.5rem;margin-bottom:8px;line-height:1.2;" data-pt>3.º Piso Inteiro<br></div>
+        <div style="font-family:var(--font-head);font-size:1.5rem;margin-bottom:8px;line-height:1.2;" data-en>3rd Floor Entire</div>
+        <div style="font-size:12px;color:var(--grey);margin-bottom:28px;letter-spacing:.05em;" data-pt>Piso completo com projeto de requalificação aprovado na Câmara — personalizável às necessidades do seu negócio</div>
+        <div style="font-size:12px;color:var(--grey);margin-bottom:28px;letter-spacing:.05em;" data-en>Complete floor with council-approved renovation project — fully adaptable to your business needs</div>
+        <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:28px;border-top:1px solid var(--border);padding-top:20px;">
+          <div style="display:flex;justify-content:space-between;font-size:12px;">
+            <span style="color:var(--grey)" data-pt>Área bruta</span>
+            <span style="color:var(--grey)" data-en>Gross area</span>
+            <span style="color:var(--white);font-weight:600;">388,65 m²</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:12px;">
+            <span style="color:var(--grey)" data-pt>Exposição</span>
+            <span style="color:var(--grey)" data-en>Exposure</span>
+            <span style="color:var(--white);font-weight:600;" data-pt>Mar & Terra</span>
+            <span style="color:var(--white);font-weight:600;" data-en>Sea & Land</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:12px;">
+            <span style="color:var(--grey)" data-pt>Projeto</span>
+            <span style="color:var(--grey)" data-en>Project</span>
+            <span style="color:var(--gold);font-weight:700;" data-pt>Aprovado CMF</span>
+            <span style="color:var(--gold);font-weight:700;" data-en>Council Approved</span>
+          </div>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px;">
+          <span class="tag-pill" data-pt>Piso Topo</span><span class="tag-pill" data-en>Top Floor</span>
+          <span class="tag-pill" data-pt>Vista Panorâmica</span><span class="tag-pill" data-en>Panoramic View</span>
+          <span class="tag-pill" data-pt>Personalizável</span><span class="tag-pill" data-en>Customisable</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;color:var(--gold);font-size:11px;letter-spacing:.15em;text-transform:uppercase;">
+          <span data-pt>Pedir Informação</span><span data-en>Request Info</span>
+          <span style="transition:transform .3s;" class="arr">→</span>
+        </div>
+      </div>
+
+      <!-- CARD 3 -->
+      <div class="av-card" style="background:var(--dark3);border:1px solid var(--border);padding:36px 32px;position:relative;overflow:hidden;transition:var(--tr);cursor:pointer;" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),transparent);"></div>
+        <div style="font-size:10px;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;" data-pt>Piso -1</div>
+        <div style="font-size:10px;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;" data-en>Floor -1</div>
+        <div style="font-family:var(--font-head);font-size:1.5rem;margin-bottom:8px;line-height:1.2;" data-pt>Lugar de Estacionamento</div>
+        <div style="font-family:var(--font-head);font-size:1.5rem;margin-bottom:8px;line-height:1.2;" data-en>ParkingSpace</div>
+        <div style="font-size:12px;color:var(--grey);margin-bottom:28px;letter-spacing:.05em;" data-pt>Garagem privativa no próprio edifício</div>
+        <div style="font-size:12px;color:var(--grey);margin-bottom:28px;letter-spacing:.05em;" data-en>Private garage within the building</div>
+        <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:28px;border-top:1px solid var(--border);padding-top:20px;">
+          <div style="display:flex;justify-content:space-between;font-size:12px;">
+            <span style="color:var(--grey)" data-pt>Acesso</span>
+            <span style="color:var(--grey)" data-en>Access</span>
+            <span style="color:var(--white);font-weight:600;" data-pt>Elevador direto</span>
+            <span style="color:var(--white);font-weight:600;" data-en>Direct elevator</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:12px;">
+            <span style="color:var(--grey)" data-pt>Segurança</span>
+            <span style="color:var(--grey)" data-en>Security</span>
+            <span style="color:var(--white);font-weight:600;">CCTV 24h</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:12px;">
+            <span style="color:var(--grey)" data-pt>Disponibilidade</span>
+            <span style="color:var(--grey)" data-en>Availability</span>
+            <span style="color:var(--gold);font-weight:700;" data-pt>A consultar</span>
+            <span style="color:var(--gold);font-weight:700;" data-en>On request</span>
+          </div>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px;">
+          <span class="tag-pill" data-pt>No Edifício</span><span class="tag-pill" data-en>In-Building</span>
+          <span class="tag-pill" data-pt>Acesso 24h</span><span class="tag-pill" data-en>24h Access</span>
+          <span class="tag-pill" data-pt>Coberto</span><span class="tag-pill" data-en>Covered</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;color:var(--gold);font-size:11px;letter-spacing:.15em;text-transform:uppercase;">
+          <span data-pt>Pedir Informação</span><span data-en>Request Info</span>
+          <span style="transition:transform .3s;" class="arr">→</span>
+        </div>
+      </div>
+
+    </div><!-- /grid -->
+  </div>
+</div>
+
+<style>
+  @keyframes blink { 0%,100%{opacity:1;} 50%{opacity:.3;} }
+  .tag-pill { font-size:10px; letter-spacing:.1em; text-transform:uppercase; border:1px solid var(--border); color:var(--grey); padding:3px 10px; white-space:nowrap; }
+  .av-card:hover { border-color:var(--gold) !important; transform:translateY(-5px); box-shadow:0 20px 40px rgba(0,0,0,.4); }
+  .av-card:hover .arr { transform:translateX(6px); }
+  #avail-grid { transition: var(--tr); }
+  @media(max-width:900px){ #avail-grid { grid-template-columns:1fr !important; } #available{padding:56px 22px;} }
+</style>
+
+<!-- PLANTAS -->
+<section id="plantas">
+  <div style="max-width:600px;">
+    <p class="stag rv" data-pt>Plantas</p>
+    <p class="stag rv" data-en>Floor Plans</p>
+    <h2 class="stitle rv" data-pt>Plantas dos Pisos</h2>
+    <h2 class="stitle rv" data-en>Floor Plans</h2>
+  </div>
+  <div style="margin-top:48px;display:grid;grid-template-columns:1fr 1fr;gap:24px;">
+    <div>
+      <p style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;" data-pt>Piso 2</p>
+      <p style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;" data-en>Floor 2</p>
+      <img class="rv planta-img" src="assets/img/planta-piso2.jpg" alt="Planta do Piso 2 — Edifício Chorão Ramalho" style="width:100%;display:block;border:1px solid var(--border);cursor:zoom-in;" loading="lazy" />
+    </div>
+    <div>
+      <p style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;" data-pt>Piso 3</p>
+      <p style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;" data-en>Floor 3</p>
+      <img class="rv planta-img" src="assets/img/planta-piso3.jpg" alt="Planta do Piso 3 — Edifício Chorão Ramalho" style="width:100%;display:block;border:1px solid var(--border);cursor:zoom-in;" loading="lazy" />
+    </div>
+  </div>
+</section>
+
+<!-- HISTORY -->
+<section id="history">
+  <div class="hvis rv">
+    <img id="img-entrance2" src="assets/img/foto-antigas-1.jpg" alt="Fotografia antiga do Edifício Chorão Ramalho" style="width:100%;aspect-ratio:3/4;object-fit:cover;display:block;" />
+    <div class="hyr">1961</div>
+  </div>
+  <div>
+    <p class="stag rv" data-pt>História</p>
+    <p class="stag rv" data-en>History</p>
+    <h2 class="stitle rv" data-pt>Uma obra icónica<br>da arquitetura moderna</h2>
+    <h2 class="stitle rv" data-en>An iconic work<br>of modern architecture</h2>
+    <div class="sline rv"></div>
+    <p class="stxt rv" data-pt>O Edifício Chorão Ramalho, propriedade da centenária empresa João de Freitas Martins, S.A. — fundada em 1888 — é uma obra marcante do renomado arquiteto português Chorão Ramalho. Construído em 1961, foi renovado em 2014 sob assistência técnica do Arquiteto Rui Campos Matos, com materiais de excelência e identidade preservada. Localizado na Avenida do Mar — a artéria nobre de Funchal — em frente ao Porto onde atracam 300 cruzeiros por ano.</p>
+    <p class="stxt rv" data-en>The Chorão Ramalho Building, owned by the centennial company João de Freitas Martins, S.A. — founded in 1888 — is a prominent work by the renowned Portuguese architect Chorão Ramalho. Built in 1961, refurbished in 2014 under Architect Rui Campos Matos, preserving its identity with premium materials. Located on Avenida do Mar, facing Funchal Harbour where 300 cruise ships dock each year.</p>
+    <div class="hfacts rv">
+      <div class="fact"><div class="ftitle" data-pt>Construído</div><div class="ftitle" data-en>Built</div><div class="fval">1961</div></div>
+      <div class="fact"><div class="ftitle" data-pt>Renovado</div><div class="ftitle" data-en>Refurbished</div><div class="fval">2014</div></div>
+      <div class="fact"><div class="ftitle" data-pt>Arquiteto</div><div class="ftitle" data-en>Architect</div><div class="fval">Chorão Ramalho</div></div>
+      <div class="fact"><div class="ftitle" data-pt>Proprietário</div><div class="ftitle" data-en>Owner</div><div class="fval">JFM, S.A. — 1888</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SPACES -->
+<section id="typology">
+  <div style="max-width:600px;">
+    <p class="stag rv" data-pt>Tipologia</p>
+    <p class="stag rv" data-en>Typology</p>
+    <h2 class="stitle rv" data-pt>Ver Espaços</h2>
+    <h2 class="stitle rv" data-en>View spaces</h2>
+    <div class="sline rv"></div>
+    <p class="stxt rv" data-pt>Escritórios com vista mar e vista terra nos pisos 1 e 2. Loja comercial no rés-do-chão. Acabamentos premium com pavimento vintage em madeira, janelas de vidro duplo e estores exteriores elétricos.</p>
+    <p class="stxt rv" data-en>Sea view and land view offices on floors 1 and 2. Commercial shop on ground floor. Premium finishes with vintage wood flooring, double glazing and exterior electric blinds.</p>
+  </div>
+  <div class="sgrid rv">
+    <div class="sc2" id="card-seaview">
+      <div class="sc2-bg" id="bg-seaview"></div>
+      <div class="sc2-body">
+        <div class="sc2-tag" data-pt>Pisos 1–2 · Vista Mar</div>
+        <div class="sc2-tag" data-en>Floors 1–2 · Sea View</div>
+        <div class="sc2-title" data-pt>Escritórios</div>
+        <div class="sc2-title" data-en>Offices</div>
+        <div class="sc2-size">20m² – 42m²</div>
+      </div>
+      <div class="sc2-arr">→</div>
+    </div>
+    <div class="sc2" id="card-landview">
+      <div class="sc2-bg" id="bg-landview"></div>
+      <div class="sc2-body">
+        <div class="sc2-tag" data-pt>Pisos 1–2 · Vista Terra</div>
+        <div class="sc2-tag" data-en>Floors 1–2 · Land View</div>
+        <div class="sc2-title" data-pt>Escritórios</div>
+        <div class="sc2-title" data-en>Offices</div>
+        <div class="sc2-size">55m² – 78m²</div>
+      </div>
+      <div class="sc2-arr">→</div>
+    </div>
+    <div class="sc2" id="card-shop">
+      <div class="sc2-bg" id="bg-shop"></div>
+      <div class="sc2-body">
+        <div class="sc2-tag" data-pt>Rés-do-Chão</div>
+        <div class="sc2-tag" data-en>Ground Floor</div>
+        <div class="sc2-title" data-pt>Loja Comercial</div>
+        <div class="sc2-title" data-en>Commercial Shop</div>
+        <div class="sc2-size">275m²</div>
+      </div>
+      <div class="sc2-arr">→</div>
+    </div>
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div id="lb" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:1000;align-items:center;justify-content:center;">
+  <button onclick="lbClose()" style="position:absolute;top:20px;right:28px;background:none;border:none;color:#fff;font-size:2rem;cursor:pointer;line-height:1;">×</button>
+  <button onclick="lbNav(-1)" style="position:absolute;left:20px;background:none;border:none;color:#fff;font-size:2rem;cursor:pointer;padding:16px;line-height:1;">&#8592;</button>
+  <img id="lb-img" src="" alt="" style="max-width:90vw;max-height:88vh;object-fit:contain;display:block;" />
+  <button onclick="lbNav(1)" style="position:absolute;right:20px;background:none;border:none;color:#fff;font-size:2rem;cursor:pointer;padding:16px;line-height:1;">&#8594;</button>
+</div>
+
+<!-- INTERIOR GALLERY -->
+<div id="intgall">
+  <div class="ig"><img id="ig1" src="assets/img/sala-reuniao-grande.jpg" alt="Sala de reuniões com arte mural e pavimento em madeira geométrica" loading="lazy"/><div class="ig-label" data-pt>Sala de Reuniões</div><div class="ig-label" data-en>Meeting Room</div></div>
+  <div class="ig"><img id="ig2" src="assets/img/sala-reuniao-pequena.jpg" alt="Sala de reuniões menor com fotos históricas e projetor" loading="lazy"/><div class="ig-label" data-pt>Sala de Reuniões</div><div class="ig-label" data-en>Meeting Room</div></div>
+  <div class="ig"><img id="ig3" src="assets/img/sala-vista-montanha.jpg" alt="Escritório com vista para a montanha" loading="lazy"/><div class="ig-label" data-pt>Escritório com Vista Montanha</div><div class="ig-label" data-en>Mountain View Office</div></div>
+  <div class="ig"><img id="ig4" src="assets/img/copa.jpg" alt="Cozinha de escritório moderna com bancada em granito" loading="lazy"/><div class="ig-label" data-pt>Copa</div><div class="ig-label" data-en>Kitchen</div></div>
+  <div class="ig"><img id="ig5" src="assets/img/sala-vista-mar.jpg" alt="Escritório com vista para o mar" loading="lazy"/><div class="ig-label" data-pt>Escritório com Vista Mar</div><div class="ig-label" data-en>Sea View Office</div></div>
+  <div class="ig"><img id="ig7" src="assets/img/copa-1-andar.jpg" alt="Copa equipada com electrodomésticos e azulejo branco" loading="lazy"/><div class="ig-label" data-pt>Copa 1º Andar</div><div class="ig-label" data-en>1st Floor Kitchen</div></div>
+  <div class="ig"><img id="ig8" src="assets/img/wc.jpg" alt="Instalações sanitárias modernas e espaçosas" loading="lazy"/><div class="ig-label" data-pt>Instalações Sanitárias</div><div class="ig-label" data-en>Restrooms</div></div>
+  <div class="ig"><img id="ig9" src="assets/img/entrada-1-piso.avif" alt="Entrada 1º piso" loading="lazy"/><div class="ig-label" data-pt>Entrada 1º Piso</div><div class="ig-label" data-en>1st Floor Entrance</div></div>
+  <div class="ig"><img id="ig10" src="assets/img/entrada-2-piso.avif" alt="Entrada 2º piso" loading="lazy"/><div class="ig-label" data-pt>Entrada 2º Piso</div><div class="ig-label" data-en>2nd Floor Entrance</div></div>
+  <div class="ig"><img id="ig11" src="assets/img/escadas.avif" alt="Escadas do edifício" loading="lazy"/><div class="ig-label" data-pt>Escadas</div><div class="ig-label" data-en>Stairs</div></div>
+  <div class="ig"><img id="ig12" src="assets/img/escadas-2.avif" alt="Escadas do edifício" loading="lazy"/><div class="ig-label" data-pt>Escadas</div><div class="ig-label" data-en>Stairs</div></div>
+  <div class="ig"><img id="ig13" src="assets/img/sala-espera-1-andar.avif" alt="Sala de espera 1º andar" loading="lazy"/><div class="ig-label" data-pt>Sala de Espera</div><div class="ig-label" data-en>Waiting Room</div></div>
+  <div class="ig"><img id="ig14" src="assets/img/detalhes.avif" alt="Detalhes de arquitectura" loading="lazy"/><div class="ig-label" data-pt>Detalhes</div><div class="ig-label" data-en>Details</div></div>
+  <div class="ig"><img id="ig15" src="assets/img/detalhes-1.avif" alt="Detalhes de arquitectura" loading="lazy"/><div class="ig-label" data-pt>Detalhes</div><div class="ig-label" data-en>Details</div></div>
+  <div class="ig"><img id="ig16" src="assets/img/detalhes-2.avif" alt="Detalhes de arquitectura" loading="lazy"/><div class="ig-label" data-pt>Detalhes</div><div class="ig-label" data-en>Details</div></div>
+  <div class="ig"><img id="ig17" src="assets/img/detalhes-3.avif" alt="Detalhes de arquitectura" loading="lazy"/><div class="ig-label" data-pt>Detalhes</div><div class="ig-label" data-en>Details</div></div>
+  <div class="ig"><img id="ig18" src="assets/img/aerea-1.avif" alt="Vista aérea do edifício" loading="lazy"/><div class="ig-label" data-pt>Vista Aérea</div><div class="ig-label" data-en>Aerial View</div></div>
+  <div class="ig"><img id="ig19" src="assets/img/aerea-2.avif" alt="Vista aérea do edifício" style="object-position:right center;" loading="lazy"/><div class="ig-label" data-pt>Vista Aérea</div><div class="ig-label" data-en>Aerial View</div></div>
+</div>
+
+<!-- FEATURES -->
+<section id="features">
+  <div style="max-width:600px;">
+    <p class="stag rv" data-pt>Serviços & Facilidades</p>
+    <p class="stag rv" data-en>Services & Facilities</p>
+    <h2 class="stitle rv" data-pt>Tudo o que precisa,<br>num só edifício</h2>
+    <h2 class="stitle rv" data-en>Everything you need,<br>in one building</h2>
+    <div class="sline rv"></div>
+  </div>
+  <div class="fgrid rv">
+    <div class="feat"><div class="ftit" data-pt>Estacionamento</div><div class="ftit" data-en>Parking</div><div class="fdesc" data-pt>Acesso direto por elevador para todos os pisos.</div><div class="fdesc" data-en>Direct lift access from parking to all floors.</div></div>
+    <div class="feat"><div class="ftit" data-pt>Salas de Reunião</div><div class="ftit" data-en>Meeting Rooms</div><div class="fdesc" data-pt>2 salas equipadas com projetor sem fios.</div><div class="fdesc" data-en>2 rooms with wireless projector. Art mural included.</div></div>
+    <div class="feat"><div class="ftit" data-pt>Secretariado</div><div class="ftit" data-en>Personal Assistance</div><div class="fdesc" data-pt>Serviços de secretariado e apoio administrativo.</div><div class="fdesc" data-en>Secretarial and admin support upon request.</div></div>
+    <div class="feat"><div class="ftit" data-pt>Segurança 24h</div><div class="ftit" data-en>24h Security</div><div class="fdesc" data-pt>Alarme, CCTV e vigilância noturna.</div><div class="fdesc" data-en>Alarm system, CCTV and night guard.</div></div>
+    <div class="feat"><div class="ftit" data-pt>Ar Condicionado</div><div class="ftit" data-en>Air Conditioning</div><div class="fdesc" data-pt>Disponível em todas as salas.</div><div class="fdesc" data-en>Available in all rooms.</div></div>
+    <div class="feat"><div class="ftit" data-pt>Copa & Catering</div><div class="ftit" data-en>Kitchen & Catering</div><div class="fdesc" data-pt>Copa equipada e serviço de catering empresarial.</div><div class="fdesc" data-en>Equipped kitchen and business catering service.</div></div>
+    <div class="feat"><div class="ftit" data-pt>Vidro Duplo</div><div class="ftit" data-en>Double Glazing</div><div class="fdesc" data-pt>Isolamento térmico e acústico de alto desempenho.</div><div class="fdesc" data-en>High-performance thermal and acoustic insulation.</div></div>
+    <div class="feat"><div class="ftit" data-pt>Soalho Vintage</div><div class="ftit" data-en>Vintage Flooring</div><div class="fdesc" data-pt>Pavimento em madeira geométrica de prestígio.</div><div class="fdesc" data-en>Prestigious geometric vintage wood flooring.</div></div>
+    <div class="feat"><div class="ftit" data-pt>Bastidor</div><div class="ftit" data-en>Server Room</div><div class="fdesc" data-pt>Infraestrutura de rede centralizada com bastidor técnico.</div><div class="fdesc" data-en>Centralised network infrastructure with technical rack room.</div></div>
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section id="location">
+  <div>
+    <p class="stag rv" data-pt>Localização</p>
+    <p class="stag rv" data-en>Location</p>
+    <h2 class="stitle rv" data-pt>No coração de<br>Funchal</h2>
+    <h2 class="stitle rv" data-en>In the heart of<br>Funchal</h2>
+    <div class="sline rv"></div>
+    <p class="stxt rv" data-pt>Localizado na Avenida do Mar — a artéria nobre de Funchal — em frente ao Porto onde atracam cerca de 300 cruzeiros por ano. Confinante com a GNR e o Parlamento Regional.</p>
+    <p class="stxt rv" data-en>Located on Avenida do Mar, Funchal's noble seafront avenue, right in front of the Harbour where ~300 cruise ships dock yearly. Adjacent to the National Guard and Regional Parliament.</p>
+    <ul class="nlist rv" data-pt-block>
+      <li><span>Porto de Funchal</span><span>0'</span></li>
+      <li><span>GNR / Parlamento Regional</span><span>Confrontante</span></li>
+      <li><span>Autoridade Portuária</span><span>Confrontante</span></li>
+      <li><span>Bankinter · Millennium BCP</span><span>1–3'</span></li>
+      <li><span>Correios / Post Office</span><span>4'</span></li>
+      <li><span>Centro Comercial</span><span>7'</span></li>
+    </ul>
+    <ul class="nlist rv" data-en-block>
+      <li><span>Funchal Harbour</span><span>0'</span></li>
+      <li><span>National Guard / Parliament</span><span>Adjacent</span></li>
+      <li><span>Port Authority</span><span>Adjacent</span></li>
+      <li><span>Banks</span><span>1–3' walk</span></li>
+      <li><span>Post Office</span><span>4' walk</span></li>
+      <li><span>Shopping Centre</span><span>7' walk</span></li>
+    </ul>
+  </div>
+  <div class="lmap rv">
+    <iframe src="https://maps.google.com/maps?q=Avenida+do+Mar+15+Funchal+Madeira+Portugal&output=embed" height="450" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="cinfo">
+    <p class="stag rv" data-pt>Contacto</p>
+    <p class="stag rv" data-en>Contact</p>
+    <h2 class="rv" data-pt>Vamos conversar</h2>
+    <h2 class="rv" data-en>Let's talk</h2>
+    <div class="sline rv"></div>
+    <p class="stxt rv" style="margin-bottom:36px" data-pt>Interessado em arrendar um espaço? Contacte-nos para agendar uma visita ou obter informações sobre disponibilidade e condições.</p>
+    <p class="stxt rv" style="margin-bottom:36px" data-en>Interested in renting? Contact us to schedule a visit or to get more details about availability and terms.</p>
+    <div class="ci rv"><div class="ci-ico">📍</div><div><div class="ci-lbl" data-pt>Morada</div><div class="ci-lbl" data-en>Address</div><div class="ci-val">Av. do Mar, nº 15, 1º andar<br>9000-054 Funchal, Madeira</div></div></div>
+    <div class="ci rv"><div class="ci-ico">📞</div><div><div class="ci-lbl" data-pt>Telefone</div><div class="ci-lbl" data-en>Phone</div><div class="ci-val"><a href="tel:+351291239000">(+351) 291 239 000</a></div></div></div>
+    <div class="ci rv"><div class="ci-ico">✉️</div><div><div class="ci-lbl">Email</div><div class="ci-val"><a href="mailto:luisa.rodrigues@jwholding.pt">luisa.rodrigues@jwholding.pt</a></div></div></div>
+  </div>
+  <div>
+    <div class="cform rv">
+      <div class="frow">
+        <input class="fi" type="text" placeholder="Nome / Name" />
+        <input class="fi" type="email" placeholder="Email" />
+      </div>
+      <input class="fi" type="tel" placeholder="Telefone / Phone" />
+      <select class="fi" style="appearance:none;cursor:pointer;">
+        <option value="" disabled selected>Tipo de Espaço / Type of Space</option>
+        <option>Escritório Vista Mar / Sea View Office (20–42m²)</option>
+        <option>Escritório Vista Terra / Land View Office (55–78m²)</option>
+        <option>Loja Comercial / Commercial Shop (275m²)</option>
+        <option>Mais Informações / More Information</option>
+      </select>
+      <textarea class="fi" placeholder="Mensagem / Message"></textarea>
+      <button class="fsub" data-pt>Enviar Mensagem →</button>
+      <button class="fsub" data-en>Send Message →</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="flogo">Edifício <span>Chorão</span> Ramalho</div>
+  <div class="fcopy">© 2026 João de Freitas Martins, S.A. — <span data-pt>Todos os direitos reservados</span><span data-en>All rights reserved</span></div>
+</footer>
+
+<script>
+// ── INJECT REAL PHOTOS from uploaded images ──
+// We'll use object URLs created from the image elements in the conversation
+// Since we can't directly reference uploaded files, we'll use CSS background techniques
+// and data attributes — images are passed as base64 or URLs if available.
+// For this demo, we reference the images by their described positions.
+
+// Map images to elements using descriptive background colors as placeholders
+// that match the real photo content/mood
+// Hero background
+document.getElementById('heroBg').style.backgroundImage = "url('assets/img/hero.jpg')";
+
+// Space card backgrounds
+const bgSeaView = document.getElementById('bg-seaview');
+const bgLandView = document.getElementById('bg-landview');
+const bgShop = document.getElementById('bg-shop');
+if(bgSeaView) bgSeaView.style.backgroundImage = "url('assets/img/sala-vista-mar-3.jpg')";
+if(bgLandView) bgLandView.style.backgroundImage = "url('assets/img/sala-vista-montanha.jpg')";
+if(bgShop) bgShop.style.backgroundImage = "url('assets/img/espaco-comercial-exterior-1.avif')";
+
+// ── LANG ──
+function setLang(l){
+  document.documentElement.setAttribute('data-lang',l);
+  document.getElementById('bpt').classList.toggle('active',l==='pt');
+  document.getElementById('ben').classList.toggle('active',l==='en');
+}
+
+// ── CURSOR ──
+const cur=document.getElementById('cur'), curR=document.getElementById('curR');
+document.addEventListener('mousemove',e=>{
+  cur.style.cssText+=`;left:${e.clientX-4}px;top:${e.clientY-4}px`;
+  curR.style.cssText+=`;left:${e.clientX-17}px;top:${e.clientY-17}px`;
+});
+document.querySelectorAll('a,button,.sc2,.feat').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{ cur.style.transform='scale(2.5)'; curR.style.transform='scale(1.5)'; });
+  el.addEventListener('mouseleave',()=>{ cur.style.transform=''; curR.style.transform=''; });
+});
+
+// ── SCROLL ──
+const sprog=document.getElementById('sprog'), nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>{
+  const st=document.documentElement.scrollTop, sh=document.documentElement.scrollHeight-window.innerHeight;
+  sprog.style.width=(st/sh*100)+'%';
+  nav.classList.toggle('sc',st>50);
+});
+
+// ── REVEAL ──
+const rvEls=document.querySelectorAll('.rv');
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach((e,i)=>{ if(e.isIntersecting){ setTimeout(()=>e.target.classList.add('vis'),i*60); obs.unobserve(e.target); }});
+},{threshold:.08});
+rvEls.forEach(el=>obs.observe(el));
+
+// ── HERO ──
+document.getElementById('hero').classList.add('loaded');
+
+// ── CARDS → CONTACT ──
+document.querySelectorAll('.sc2').forEach(c=>c.addEventListener('click',()=>document.getElementById('contact').scrollIntoView({behavior:'smooth'})));
+
+// ── LIGHTBOX ──
+const lbEl = document.getElementById('lb');
+const lbImg = document.getElementById('lb-img');
+let lbImgs = [], lbIdx = 0;
+
+document.querySelectorAll('#intgall .ig img').forEach((img, i) => {
+  img.style.cursor = 'zoom-in';
+  img.addEventListener('click', () => {
+    lbImgs = Array.from(document.querySelectorAll('#intgall .ig img'));
+    lbIdx = i;
+    lbShow();
+  });
+});
+
+document.querySelectorAll('.planta-img').forEach((img, i) => {
+  img.addEventListener('click', () => {
+    lbImgs = Array.from(document.querySelectorAll('.planta-img'));
+    lbIdx = i;
+    lbShow();
+  });
+});
+
+function lbShow() {
+  lbImg.src = lbImgs[lbIdx].src;
+  lbImg.alt = lbImgs[lbIdx].alt;
+  lbEl.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+
+function lbClose() {
+  lbEl.style.display = 'none';
+  document.body.style.overflow = '';
+}
+
+function lbNav(dir) {
+  lbIdx = (lbIdx + dir + lbImgs.length) % lbImgs.length;
+  lbShow();
+}
+
+lbEl.addEventListener('click', e => { if(e.target === lbEl) lbClose(); });
+document.addEventListener('keydown', e => {
+  if(lbEl.style.display === 'none') return;
+  if(e.key === 'ArrowRight') lbNav(1);
+  if(e.key === 'ArrowLeft') lbNav(-1);
+  if(e.key === 'Escape') lbClose();
+});
+</script>
+</body>
+</html>
