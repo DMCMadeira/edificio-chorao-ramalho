@@ -51,6 +51,7 @@
     /* CURSOR */
     .cur { width: 8px; height: 8px; background: var(--gold); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; transition: transform .15s; mix-blend-mode: difference; }
     .cur-ring { width: 34px; height: 34px; border: 1px solid var(--gold); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9998; transition: all .3s; opacity: .45; }
+    @media (hover: none) { .cur, .cur-ring { display: none; } }
 
     /* SCROLL PROGRESS */
     #sprog { position: fixed; top: 0; left: 0; height: 2px; background: var(--gold); z-index: 300; width: 0; }
