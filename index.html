@@ -226,6 +226,8 @@
     .mob-links a { display: block; padding: 20px 48px; font-size: 13px; letter-spacing: .25em; text-transform: uppercase; color: var(--grey); text-decoration: none; transition: var(--tr); }
     .mob-links a:hover { color: var(--gold); }
     .mob-lang { display: flex; gap: 12px; margin-top: 40px; }
+    .mob-close { position: absolute; top: 20px; right: 24px; background: none; border: none; color: var(--white); font-size: 22px; cursor: pointer; line-height: 1; padding: 4px; opacity: .6; transition: var(--tr); }
+    .mob-close:hover { opacity: 1; color: var(--gold); }
 
     /* RESPONSIVE */
     @media(max-width:900px){
@@ -282,6 +284,7 @@
 
 <!-- MOBILE MENU -->
 <div id="mob-menu">
+  <button class="mob-close" onclick="closeMenu()" aria-label="Fechar menu">&#x2715;</button>
   <ul class="mob-links">
     <li><a href="#history" onclick="closeMenu()" data-pt>História</a><a href="#history" onclick="closeMenu()" data-en>History</a></li>
     <li><a href="#typology" onclick="closeMenu()" data-pt>Espaços</a><a href="#typology" onclick="closeMenu()" data-en>Spaces</a></li>
