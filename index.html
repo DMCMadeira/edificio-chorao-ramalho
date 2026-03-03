@@ -207,6 +207,22 @@
     html[data-lang="pt"] [data-pt-flex] { display: flex; }
     html[data-lang="en"] [data-en-flex] { display: flex; }
 
+    /* HAMBURGER */
+    .hbg-btn { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; z-index: 200; }
+    .hbg-btn span { display: block; width: 24px; height: 1.5px; background: var(--white); transition: all .3s ease; }
+    .hbg-btn.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .hbg-btn.open span:nth-child(2) { opacity: 0; }
+    .hbg-btn.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    /* MOBILE MENU */
+    #mob-menu { display: none; position: fixed; inset: 0; background: rgba(13,13,13,.97); z-index: 150; flex-direction: column; align-items: center; justify-content: center; gap: 0; }
+    #mob-menu.open { display: flex; }
+    .mob-links { list-style: none; text-align: center; }
+    .mob-links li { border-bottom: 1px solid var(--border); }
+    .mob-links a { display: block; padding: 20px 48px; font-size: 13px; letter-spacing: .25em; text-transform: uppercase; color: var(--grey); text-decoration: none; transition: var(--tr); }
+    .mob-links a:hover { color: var(--gold); }
+    .mob-lang { display: flex; gap: 12px; margin-top: 40px; }
+
     /* RESPONSIVE */
     @media(max-width:900px){
       section{padding:56px 22px;}
@@ -218,6 +234,8 @@
       .hcont{padding:0 22px 56px;}
       .hstats{right:22px;bottom:56px;}
       .nlinks{display:none;}
+      #lang-sw-desktop{display:none;}
+      .hbg-btn{display:flex;}
       footer{flex-direction:column;gap:10px;text-align:center;}
       #gallstrip{grid-template-columns:1fr 1fr;grid-template-rows:220px 220px;}
       .gs.big{grid-row:unset;}
@@ -249,11 +267,29 @@
     <li><a href="#location" data-pt>Localização</a><a href="#location" data-en>Location</a></li>
     <li><a href="#contact" data-pt>Contacto</a><a href="#contact" data-en>Contact</a></li>
   </ul>
-  <div class="lang-sw">
+  <div class="lang-sw" id="lang-sw-desktop">
     <button class="lb active" onclick="setLang('pt')" id="bpt">PT</button>
     <button class="lb" onclick="setLang('en')" id="ben">EN</button>
   </div>
+  <button class="hbg-btn" id="hbg-btn" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<!-- MOBILE MENU -->
+<div id="mob-menu">
+  <ul class="mob-links">
+    <li><a href="#history" onclick="closeMenu()" data-pt>História</a><a href="#history" onclick="closeMenu()" data-en>History</a></li>
+    <li><a href="#typology" onclick="closeMenu()" data-pt>Espaços</a><a href="#typology" onclick="closeMenu()" data-en>Spaces</a></li>
+    <li><a href="#features" onclick="closeMenu()" data-pt>Serviços</a><a href="#features" onclick="closeMenu()" data-en>Services</a></li>
+    <li><a href="#location" onclick="closeMenu()" data-pt>Localização</a><a href="#location" onclick="closeMenu()" data-en>Location</a></li>
+    <li><a href="#contact" onclick="closeMenu()" data-pt>Contacto</a><a href="#contact" onclick="closeMenu()" data-en>Contact</a></li>
+  </ul>
+  <div class="mob-lang">
+    <button class="lb active" onclick="setLang('pt');closeMenu()" id="bpt2">PT</button>
+    <button class="lb" onclick="setLang('en');closeMenu()" id="ben2">EN</button>
+  </div>
+</div>
 
 <!-- HERO -->
 <section id="hero">
@@ -739,6 +775,28 @@ rvEls.forEach(el=>obs.observe(el));
 
 // ── HERO ──
 document.getElementById('hero').classList.add('loaded');
+
+// ── HAMBURGER MENU ──
+const mobMenu = document.getElementById('mob-menu');
+const hbgBtn = document.getElementById('hbg-btn');
+function toggleMenu(){
+  const open = mobMenu.classList.toggle('open');
+  hbgBtn.classList.toggle('open', open);
+  document.body.style.overflow = open ? 'hidden' : '';
+}
+function closeMenu(){
+  mobMenu.classList.remove('open');
+  hbgBtn.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// Sync lang buttons inside mobile menu
+const origSetLang = setLang;
+function setLang(l){
+  origSetLang(l);
+  document.getElementById('bpt2').classList.toggle('active', l==='pt');
+  document.getElementById('ben2').classList.toggle('active', l==='en');
+}
 
 // ── CARDS → CONTACT ──
 document.querySelectorAll('.sc2').forEach(c=>c.addEventListener('click',()=>document.getElementById('contact').scrollIntoView({behavior:'smooth'})));
