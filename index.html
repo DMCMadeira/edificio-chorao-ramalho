@@ -197,6 +197,10 @@
     html[data-lang="pt"] span[data-pt], html[data-lang="pt"] a[data-pt], html[data-lang="pt"] button[data-pt] { display: inline; }
     html[data-lang="en"] div[data-en], html[data-lang="en"] p[data-en], html[data-lang="en"] h2[data-en], html[data-lang="en"] li[data-en], html[data-lang="en"] ul[data-en] { display: block; }
     html[data-lang="en"] span[data-en], html[data-lang="en"] a[data-en], html[data-lang="en"] button[data-en] { display: inline; }
+    /* mob-menu: override .mob-links a{display:block} with higher specificity */
+    #mob-menu [data-pt], #mob-menu [data-en] { display: none; }
+    html[data-lang="pt"] #mob-menu a[data-pt] { display: block; }
+    html[data-lang="en"] #mob-menu a[data-en] { display: block; }
     [data-pt-block],[data-en-block] { display: none; }
     html[data-lang="pt"] [data-pt-block] { display: block; }
     html[data-lang="en"] [data-en-block] { display: block; }
