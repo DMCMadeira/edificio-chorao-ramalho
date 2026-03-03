@@ -111,3 +111,40 @@ document.addEventListener('keydown', e => {
   if(e.key === 'ArrowLeft') lbNav(-1);
   if(e.key === 'Escape') lbClose();
 });
+
+// ── CONTACT FORM ──
+const contactForm = document.getElementById('contact-form');
+const formMsg = document.getElementById('form-msg');
+if(contactForm){
+  contactForm.addEventListener('submit', async e => {
+    e.preventDefault();
+    const btn = contactForm.querySelector('button[type="submit"]:not([style*="none"])') || contactForm.querySelector('.fsub');
+    const data = new FormData(contactForm);
+    data.append('botcheck', '');
+    try {
+      btn.disabled = true;
+      const res = await fetch('https://api.web3forms.com/submit', { method:'POST', body: data });
+      const json = await res.json();
+      if(json.success){
+        formMsg.style.display = 'block';
+        formMsg.style.color = '#4ade80';
+        formMsg.style.borderColor = '#4ade80';
+        formMsg.textContent = document.documentElement.dataset.lang === 'en'
+          ? 'Message sent! We will get back to you shortly.'
+          : 'Mensagem enviada! Entraremos em contacto brevemente.';
+        contactForm.reset();
+      } else {
+        throw new Error();
+      }
+    } catch {
+      formMsg.style.display = 'block';
+      formMsg.style.color = '#f87171';
+      formMsg.style.borderColor = '#f87171';
+      formMsg.textContent = document.documentElement.dataset.lang === 'en'
+        ? 'Something went wrong. Please try again.'
+        : 'Ocorreu um erro. Por favor tente novamente.';
+    } finally {
+      btn.disabled = false;
+    }
+  });
+}
