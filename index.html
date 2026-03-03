@@ -757,15 +757,17 @@ function setLang(l){
 }
 
 // ── CURSOR ──
-const cur=document.getElementById('cur'), curR=document.getElementById('curR');
-document.addEventListener('mousemove',e=>{
-  cur.style.cssText+=`;left:${e.clientX-4}px;top:${e.clientY-4}px`;
-  curR.style.cssText+=`;left:${e.clientX-17}px;top:${e.clientY-17}px`;
-});
-document.querySelectorAll('a,button,.sc2,.feat').forEach(el=>{
-  el.addEventListener('mouseenter',()=>{ cur.style.transform='scale(2.5)'; curR.style.transform='scale(1.5)'; });
-  el.addEventListener('mouseleave',()=>{ cur.style.transform=''; curR.style.transform=''; });
-});
+if(window.matchMedia('(hover:hover)').matches){
+  const cur=document.getElementById('cur'), curR=document.getElementById('curR');
+  document.addEventListener('mousemove',e=>{
+    cur.style.cssText+=`;left:${e.clientX-4}px;top:${e.clientY-4}px`;
+    curR.style.cssText+=`;left:${e.clientX-17}px;top:${e.clientY-17}px`;
+  });
+  document.querySelectorAll('a,button,.sc2,.feat').forEach(el=>{
+    el.addEventListener('mouseenter',()=>{ cur.style.transform='scale(2.5)'; curR.style.transform='scale(1.5)'; });
+    el.addEventListener('mouseleave',()=>{ cur.style.transform=''; curR.style.transform=''; });
+  });
+}
 
 // ── SCROLL ──
 const sprog=document.getElementById('sprog'), nav=document.getElementById('nav');
