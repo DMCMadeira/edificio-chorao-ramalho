@@ -749,6 +749,8 @@ function setLang(l){
   document.documentElement.setAttribute('data-lang',l);
   document.getElementById('bpt').classList.toggle('active',l==='pt');
   document.getElementById('ben').classList.toggle('active',l==='en');
+  document.getElementById('bpt2').classList.toggle('active',l==='pt');
+  document.getElementById('ben2').classList.toggle('active',l==='en');
 }
 
 // ── CURSOR ──
@@ -794,13 +796,6 @@ function closeMenu(){
   document.body.style.overflow = '';
 }
 
-// Sync lang buttons inside mobile menu
-const origSetLang = setLang;
-function setLang(l){
-  origSetLang(l);
-  document.getElementById('bpt2').classList.toggle('active', l==='pt');
-  document.getElementById('ben2').classList.toggle('active', l==='en');
-}
 
 // ── CARDS → CONTACT ──
 document.querySelectorAll('.sc2').forEach(c=>c.addEventListener('click',()=>document.getElementById('contact').scrollIntoView({behavior:'smooth'})));
